@@ -1,0 +1,140 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage{sectsty} % Allows customizing section commands
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{\thepage} % Page numbering for center footer
+\fancyfoot[R]{} % Empty right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{
+\normalfont \normalsize
+\textsc{Kungliga Tekniska Högskolan, Data-Intensive Computing} \\ [10pt] % Your university, school and/or department name(s)
+Reading assignment 1 \\ [25pt]
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge Review:\\Want to scale in centralized systems? Think P2P \\ % The assignment title
+\vspace{5mm}
+\normalsize \textit{Anne-Marie Kermarrec and François Taïani}
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Riccardo Sibani} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+\section{Motivation}
+Authors sustain that in the last years distributed applications tend to be \textit{cloud-centric} rather than \textit{P2P}.
+\textit{P2P} systems proved to be highly scalabla and fault tolerant and, thus, they call off the central component in charge of coordinating the operations and manitaining a global state.
+In the reality, the paper compares P2P and Cloud centric systems, showing that many times some P2P solutions are currently embraced by modern cloud centric systems.
+
+%------------------------------------------------
+
+\section{Contributions}
+The main contribution are in the Cloud computing field since this paper denounce a common practice in the designing of cloud systems which consist in take proven P2P solutions and easily apply them in cloud computing (which are on average less complex systems). \\
+The paper also consists in  a small survey of different solution in data storage in distributed systems (section 2: From distributed hash tables to key-value stores), graph construction (section 3: Gossip-based versus centralized KNN graph constructon) and a small discussion over scalability between the two competitors (P2P and other decentralized distributed systems). \\
+In the reviewer's opinion the paper does not propose a new solution but it tries to bring to the attention the fact that many decentralized distributed systems could actually be implemented in a P2P manner given the advantages of scalability and large-scale systems.
+
+\section{Solution}
+
+There is not a real solution in this paper if not the suggestion to have a \textit{P2P mindset} when the reader will face the challenge of develop a new decentralized system designed to scale. \\
+Anyhow is important to notice, as the authors remark, that:\\
+\textit{Decentralized designs will in the long term become increasingly applied to very-large-scale data center systems} \\
+As it is possible to notice thanks to the new distribution solutions such as bitcoins and blockchain in general.
+
+
+\section{Strong Points}
+
+\begin{itemize} 
+  \item Strong point of the proposed P2P solution is the scalability of it (virtually infinite) since it does not require a central coordinator.
+  
+  \item The second main strong point is the absence of a central authority itself, which gives several benefits on a decentralized control layer and requires less or no resources to the provider of the service (e.g. Torrent, blockchains).
+
+  \item Interesting and not trivial the section 4.2 which explores programming frameworks for decentralized systems which bring to the attention of the reader the lack of a P2P framework.
+
+  \item The paper is actually correct and on the time since in the recent years large distributed systems started to migrate from decentralized solution to blockchain based solutions (which are underneath P2P based).
+\end{itemize}
+
+\section{Weak Points}
+
+\begin{itemize}
+  \item The implementatin of a P2P system, mainly without a P2P framework, is not trivial and often even complicated since it requires different level of abstractation and different protocols between the distributed nodes.
+  \item No central authority can also be a weak point in decentralised distributed system because it might require the users to download a node (e.g. Spotify, Skype, Bitcoin, Torrent).
+  \item In case of many transactions that need to be register by many nodes it might not be the best solution due to high replication factor required (e.g. need to save the file on different nodes in case one of them fails, this solution is faster in systems with a central authority such as Google File System).
+  \item The paper do not bring to the attention the blockchain implementation of the P2P system which, in fact, demonstrated all the described potentialities the P2P systems have. It is important to remark the fact that the first blockchain (Bitcoin) appeared in 2009 (6 years before the paper was published).
+\end{itemize}
+
+
+\section{Specific Comments}
+
+It is a pity that the authors did not point out the lack of the P2P sytems since it results in an incomplete paper: they are mainly showing the advantages and not weak point of the P2P systems. It seems like they are promoting their solution without leaving any possibility to the already successful and prominent decentralized distributed system. \\
+
+The paper refers to different P2P systems and sometimes they even marginally related with P2P such as Spotify which stopped to use P2P commubnication when sharing highly reproduced songs back in 2014 (one year earlier the publication of the paper) and that in fact has never really relied on that protocol. \\
+
+Instead miss to enounce the rising blockchain alternatives that successfully implement P2P protocols and have in scaling the main advantage in compare with decentralised distributed systems.
+
+
+E' scritto bene?
+
+\section{Conclusion}
+
+The paper arguementations are all correct, in my humble opionion, I believe some key points are missing. 
+I am actually kind of afraid of writing this since the paper actually had been published back in 2015 but I believe it has some lacks. In the recent decentralize conference, for instance, the main topics has been the blockchain itself (e.g. d10e http://d10e.biz) \\
+
+Anyhow the suggested P2P mindset (when designing decentralized distributed system) is something that is taking places in the recent years, which conferm that the call to action of the authors is correct (as the recent trends are showing).
+
+
+\end{document}
